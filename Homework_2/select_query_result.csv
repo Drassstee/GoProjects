@@ -1,0 +1,4 @@
+"firstname","lastname","major","course_year","gender","birth_date","lessons"
+"student2","student2","Computer Science",2,"F","2007-10-12","{""CSCI 231"",""MATH 271"",""Calculus 1"",""CSCI 151"",""ROBT 206""}"
+"student3","student3","Computer Science",2,"F","2007-08-15","{""MATH 271"",""Calculus 1"",""CSCI 151"",""ROBT 206"",""CSCI 231""}"
+"student6","student6","Computer Science",2,"F","2007-01-26","{""ROBT 206"",""CSCI 231"",""MATH 271"",""Calculus 1"",""CSCI 151""}"
