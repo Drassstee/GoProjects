@@ -1,4 +1,4 @@
-CREATE DATABASE university;
+CREATE DATABASE University;
 
 CREATE TABLE groups (
     id SERIAL PRIMARY KEY,
