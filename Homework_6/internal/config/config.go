@@ -17,9 +17,10 @@ func Load() (*Config, error) {
 	if err != nil {
 		return nil, err
 	}
+	port := os.Getenv("PORT")
 	return &Config{
 		DatabaseURL: os.Getenv("DATABASE_URL"),
-		Port:        ":8080",
+		Port:        ":" + port,
 		JWTsecret:   os.Getenv("JWT_SECRET"),
 	}, nil
 }
