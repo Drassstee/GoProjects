@@ -29,7 +29,7 @@ func (s *StudentStorage) GetStudent(ctx context.Context, id string) (models.Stud
 
 func (s *StudentStorage) InsertStudent(ctx context.Context, student models.StudentReq) (int, error) {
 	var id int
-	err := s.DB.QueryRow(ctx, "INSERT INTO students (name, birth_date, gender, group_id) VALUES ($1, $2, $3, $4) RETURNING id", student.Id, student.Birthd, student.Gender, student.GroupId).Scan(&id)
+	err := s.DB.QueryRow(ctx, "INSERT INTO students (name, birth_date, gender, group_id) VALUES ($1, $2, $3, $4) RETURNING id", student.Name, student.Birthd, student.Gender, student.GroupId).Scan(&id)
 	return id, err
 }
 

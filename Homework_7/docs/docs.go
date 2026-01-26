@@ -699,9 +699,6 @@ const docTemplate = `{
                 "group_id": {
                     "type": "integer"
                 },
-                "id": {
-                    "type": "integer"
-                },
                 "name": {
                     "type": "string"
                 }

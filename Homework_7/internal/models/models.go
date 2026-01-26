@@ -12,7 +12,6 @@ type Student struct {
 }
 
 type StudentReq struct {
-	Id      int       `json:"id"`
 	Name    string    `json:"name"`
 	GroupId int       `json:"group_id"`
 	Gender  string    `json:"gender"`
