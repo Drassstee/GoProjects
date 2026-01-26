@@ -164,6 +164,9 @@
         "/attendance/subject": {
             "post": {
                 "description": "Insert attendance info",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -292,6 +295,9 @@
         "/group/create": {
             "post": {
                 "description": "Insert Group Info",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -414,6 +420,9 @@
         "/student/create": {
             "post": {
                 "description": "Insert Student Info",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],

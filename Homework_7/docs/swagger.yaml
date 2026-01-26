@@ -216,6 +216,8 @@ paths:
       - users
   /attendance/subject:
     post:
+      consumes:
+      - application/json
       description: Insert attendance info
       parameters:
       - description: Attendance Info
@@ -301,6 +303,8 @@ paths:
       - attendace
   /group/create:
     post:
+      consumes:
+      - application/json
       description: Insert Group Info
       parameters:
       - description: Group Info
@@ -407,6 +411,8 @@ paths:
       - student
   /student/create:
     post:
+      consumes:
+      - application/json
       description: Insert Student Info
       parameters:
       - description: Student Info

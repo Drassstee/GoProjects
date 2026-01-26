@@ -168,6 +168,9 @@ const docTemplate = `{
         "/attendance/subject": {
             "post": {
                 "description": "Insert attendance info",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -296,6 +299,9 @@ const docTemplate = `{
         "/group/create": {
             "post": {
                 "description": "Insert Group Info",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -418,6 +424,9 @@ const docTemplate = `{
         "/student/create": {
             "post": {
                 "description": "Insert Student Info",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
