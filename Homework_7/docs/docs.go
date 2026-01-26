@@ -226,13 +226,11 @@ const docTemplate = `{
                 "summary": "Get student's attendance info",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Student Id",
                         "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -267,13 +265,11 @@ const docTemplate = `{
                 "summary": "Get attendance info of the subject",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Subject Id",
                         "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -357,13 +353,11 @@ const docTemplate = `{
                 "summary": "Get instructor info",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Instructor Id",
                         "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -395,13 +389,11 @@ const docTemplate = `{
                 "summary": "Get group's schedule",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Group Id",
                         "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -482,13 +474,11 @@ const docTemplate = `{
                 "summary": "Get student's grades info",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Student Id",
                         "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -523,13 +513,11 @@ const docTemplate = `{
                 "summary": "Get student info",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Student Id",
                         "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {

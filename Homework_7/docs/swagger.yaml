@@ -250,11 +250,10 @@ paths:
       description: Get student's attendance info by ID
       parameters:
       - description: Student Id
-        in: body
+        in: path
         name: input
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -277,11 +276,10 @@ paths:
       description: Get attendance info of the subject by ID
       parameters:
       - description: Subject Id
-        in: body
+        in: path
         name: input
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -337,11 +335,10 @@ paths:
       description: Get instructor info by ID
       parameters:
       - description: Instructor Id
-        in: body
+        in: path
         name: input
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -362,11 +359,10 @@ paths:
       description: Get group's schedule by ID
       parameters:
       - description: Group Id
-        in: body
+        in: path
         name: input
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -387,11 +383,10 @@ paths:
       description: Get student info by ID
       parameters:
       - description: Student Id
-        in: body
+        in: path
         name: input
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -445,11 +440,10 @@ paths:
       description: Get student's grades by ID
       parameters:
       - description: Student Id
-        in: body
+        in: path
         name: input
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
