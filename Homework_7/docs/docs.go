@@ -293,6 +293,52 @@ const docTemplate = `{
                 }
             }
         },
+        "/group/create": {
+            "post": {
+                "description": "Insert Group Info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "group"
+                ],
+                "summary": "Insert Group Info",
+                "parameters": [
+                    {
+                        "description": "Group Info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.GroupReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
         "/instructor/{id}": {
             "get": {
                 "description": "Get instructor info by ID",
@@ -386,7 +432,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Student"
+                            "$ref": "#/definitions/models.StudentReq"
                         }
                     }
                 ],
@@ -550,6 +596,14 @@ const docTemplate = `{
                 }
             }
         },
+        "models.GroupReq": {
+            "type": "object",
+            "properties": {
+                "groupname": {
+                    "type": "string"
+                }
+            }
+        },
         "models.GroupSchedule": {
             "type": "object",
             "properties": {
@@ -615,6 +669,26 @@ const docTemplate = `{
                 },
                 "group_name": {
                     "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.StudentReq": {
+            "type": "object",
+            "properties": {
+                "birth_date": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "group_id": {
+                    "type": "integer"
                 },
                 "id": {
                     "type": "integer"

@@ -27,9 +27,15 @@ func (s *StudentStorage) GetStudent(ctx context.Context, id string) (models.Stud
 	return st, err
 }
 
-func (s *StudentStorage) InsertStudent(ctx context.Context, student models.Student) (int, error) {
+func (s *StudentStorage) InsertStudent(ctx context.Context, student models.StudentReq) (int, error) {
 	var id int
-	err := s.DB.QueryRow(ctx, "INSERT INTO students (name, birth_date, gender, group_id) VALUES ($1, $2, $3, $4) RETURNING id", &student.Id, &student.Birthd, &student.Gender, &student.GroupId).Scan(&id)
+	err := s.DB.QueryRow(ctx, "INSERT INTO students (name, birth_date, gender, group_id) VALUES ($1, $2, $3, $4) RETURNING id", student.Id, student.Birthd, student.Gender, student.GroupId).Scan(&id)
+	return id, err
+}
+
+func (s *StudentStorage) InsertGroup(ctx context.Context, groupname string) (int, error) {
+	var id int
+	err := s.DB.QueryRow(ctx, "INSERT INTO groups (groupname) VALUES ($1) RETURNING id", groupname).Scan(&id)
 	return id, err
 }
 
@@ -109,7 +115,7 @@ func (s *StudentStorage) GetAttendanceSubject(ctx context.Context, id string) ([
 
 func (s *StudentStorage) InsertAttendance(ctx context.Context, attendace models.Attendance) (int, error) {
 	var id int
-	err := s.DB.QueryRow(ctx, "INSERT INTO attendance (student_id, subject_id, visit, visit_day) VALUES ($1, $2, $3, $4) RETURNING id", &attendace.StudentId, &attendace.SubjectId, &attendace.Visited, &attendace.VisitDay).Scan(&id)
+	err := s.DB.QueryRow(ctx, "INSERT INTO attendance (student_id, subject_id, visit, visit_day) VALUES ($1, $2, $3, $4) RETURNING id", attendace.StudentId, attendace.SubjectId, attendace.Visited, attendace.VisitDay).Scan(&id)
 	return id, err
 }
 

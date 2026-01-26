@@ -60,17 +60,39 @@ func (h *Handler) GetStudent(c echo.Context) error {
 // @Description  Insert Student Info
 // @Tags         student
 // @Produce      json
-// @Param input body models.Student true "Student Info"
+// @Param input body models.StudentReq true "Student Info"
 // @Success      200  {object}  map[string]any
 // @Failure      400  {object}  map[string]any
 // @Failure      500  {object}  map[string]any
 // @Router       /student/create [post]
 func (h *Handler) InsertStudent(c echo.Context) error {
-	var st models.Student
+	var st models.StudentReq
 	if err := c.Bind(&st); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]any{"message": err.Error()})
 	}
 	id, err := h.Service.InsertStudent(c.Request().Context(), st)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]any{"err: ": err.Error()})
+	}
+	return c.JSON(http.StatusOK, map[string]any{"id": id})
+}
+
+// InsertGroup godoc
+// @Summary      Insert Group Info
+// @Description  Insert Group Info
+// @Tags         group
+// @Produce      json
+// @Param input body models.GroupReq true "Group Info"
+// @Success      200  {object}  map[string]any
+// @Failure      400  {object}  map[string]any
+// @Failure      500  {object}  map[string]any
+// @Router       /group/create [post]
+func (h *Handler) InsertGroup(c echo.Context) error {
+	var gr models.GroupReq
+	if err := c.Bind(&gr); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]any{"message": err.Error()})
+	}
+	id, err := h.Service.InsertGroup(c.Request().Context(), gr.Groupname)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]any{"err: ": err.Error()})
 	}
@@ -269,7 +291,8 @@ func (h *Handler) AuthMiddleware(n echo.HandlerFunc) echo.HandlerFunc {
 
 func (h *Handler) RegisterRoutes(e *echo.Echo) {
 	e.GET("/student/:id", h.GetStudent)
-	e.GET("/student/create", h.InsertStudent)
+	e.POST("/student/create", h.InsertStudent)
+	e.POST("/group/create", h.InsertGroup)
 	e.GET("/instructor/:id", h.GetInstructor)
 	e.GET("/student/grades/:id", h.GetStudentGrades)
 	e.GET("/schedule/group/:id", h.GetGroupSchedule)

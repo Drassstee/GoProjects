@@ -11,6 +11,14 @@ type Student struct {
 	Birthd    time.Time `json:"birth_date"`
 }
 
+type StudentReq struct {
+	Id      int       `json:"id"`
+	Name    string    `json:"name"`
+	GroupId int       `json:"group_id"`
+	Gender  string    `json:"gender"`
+	Birthd  time.Time `json:"birth_date"`
+}
+
 type Instructor struct {
 	Id        int       `json:"id"`
 	Name      string    `json:"name"`
@@ -30,6 +38,10 @@ type GroupSchedule struct {
 	Subject    string `json:"subject"`
 	Start_Time string `json:"start_time"`
 	End_Time   string `json:"end_time"`
+}
+
+type GroupReq struct {
+	Groupname string `json:"groupname"`
 }
 
 type Attendance struct {

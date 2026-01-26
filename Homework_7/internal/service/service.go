@@ -29,8 +29,12 @@ func (s *StudentService) GetStudent(ctx context.Context, id string) (models.Stud
 	return s.Storage.GetStudent(ctx, id)
 }
 
-func (s *StudentService) InsertStudent(ctx context.Context, student models.Student) (int, error) {
+func (s *StudentService) InsertStudent(ctx context.Context, student models.StudentReq) (int, error) {
 	return s.Storage.InsertStudent(ctx, student)
+}
+
+func (s *StudentService) InsertGroup(ctx context.Context, groupname string) (int, error) {
+	return s.Storage.InsertGroup(ctx, groupname)
 }
 
 func (s *StudentService) GetStudentGrades(ctx context.Context, id string) ([]models.Grade, error) {

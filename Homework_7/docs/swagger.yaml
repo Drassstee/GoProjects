@@ -35,6 +35,11 @@ definitions:
       subject_id:
         type: integer
     type: object
+  models.GroupReq:
+    properties:
+      groupname:
+        type: string
+    type: object
   models.GroupSchedule:
     properties:
       end_time:
@@ -78,6 +83,19 @@ definitions:
         type: integer
       group_name:
         type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.StudentReq:
+    properties:
+      birth_date:
+        type: string
+      gender:
+        type: string
+      group_id:
+        type: integer
       id:
         type: integer
       name:
@@ -281,6 +299,37 @@ paths:
       summary: Get attendance info of the subject
       tags:
       - attendace
+  /group/create:
+    post:
+      description: Insert Group Info
+      parameters:
+      - description: Group Info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.GroupReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Insert Group Info
+      tags:
+      - group
   /instructor/{id}:
     get:
       description: Get instructor info by ID
@@ -365,7 +414,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/models.Student'
+          $ref: '#/definitions/models.StudentReq'
       produces:
       - application/json
       responses:
