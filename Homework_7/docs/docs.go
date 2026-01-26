@@ -720,7 +720,7 @@ var SwaggerInfo = &swag.Spec{
 	Version:          "",
 	Host:             "localhost:8080",
 	BasePath:         "/",
-	Schemes:          []string{},
+	Schemes:          []string{"http"},
 	Title:            "Deployment of university app and swagger just for info",
 	Description:      "Swagger API",
 	InfoInstanceName: "swagger",

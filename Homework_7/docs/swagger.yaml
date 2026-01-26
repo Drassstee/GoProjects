@@ -463,4 +463,6 @@ paths:
       summary: Get student's grades info
       tags:
       - grades
+schemes:
+- http
 swagger: "2.0"

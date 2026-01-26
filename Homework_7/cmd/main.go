@@ -20,6 +20,7 @@ import (
 // @description Swagger API
 // @host localhost:8080
 // @BasePath /
+// @Schemes http
 func main() {
 	cfg, err := config.Load()
 	if err != nil {
