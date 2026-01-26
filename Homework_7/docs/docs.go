@@ -727,9 +727,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "",
-	Host:             "localhost:8080",
+	Host:             "university-management-app-oojg.onrender.com",
 	BasePath:         "/",
-	Schemes:          []string{"http"},
+	Schemes:          []string{"https"},
 	Title:            "Deployment of university app and swagger just for info",
 	Description:      "Swagger API",
 	InfoInstanceName: "swagger",

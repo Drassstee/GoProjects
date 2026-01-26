@@ -110,7 +110,7 @@ definitions:
       role:
         type: string
     type: object
-host: localhost:8080
+host: university-management-app-oojg.onrender.com
 info:
   contact: {}
   description: Swagger API
@@ -470,5 +470,5 @@ paths:
       tags:
       - grades
 schemes:
-- http
+- https
 swagger: "2.0"

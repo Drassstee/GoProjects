@@ -1,6 +1,6 @@
 {
     "schemes": [
-        "http"
+        "https"
     ],
     "swagger": "2.0",
     "info": {
@@ -8,7 +8,7 @@
         "title": "Deployment of university app and swagger just for info",
         "contact": {}
     },
-    "host": "localhost:8080",
+    "host": "university-management-app-oojg.onrender.com",
     "basePath": "/",
     "paths": {
         "/all_class_schedule": {
