@@ -59,6 +59,7 @@ func (h *Handler) GetStudent(c echo.Context) error {
 // @Summary      Insert Student Info
 // @Description  Insert Student Info
 // @Tags         student
+// @Accept       json
 // @Produce      json
 // @Param input body models.StudentReq true "Student Info"
 // @Success      200  {object}  map[string]any
@@ -81,6 +82,7 @@ func (h *Handler) InsertStudent(c echo.Context) error {
 // @Summary      Insert Group Info
 // @Description  Insert Group Info
 // @Tags         group
+// @Accept       json
 // @Produce      json
 // @Param input body models.GroupReq true "Group Info"
 // @Success      200  {object}  map[string]any
@@ -191,6 +193,7 @@ func (h *Handler) GetAttendanceSubject(c echo.Context) error {
 // @Summary      Insert attendance info
 // @Description  Insert attendance info
 // @Tags         attendace
+// @Accept       json
 // @Produce      json
 // @Param input body models.Attendance true "Attendance Info"
 // @Success      200  {object}  map[string]any
