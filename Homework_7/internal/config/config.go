@@ -13,11 +13,11 @@ type Config struct {
 }
 
 func Load() (*Config, error) {
-	err := godotenv.Load()
-	if err != nil {
-		return nil, err
-	}
+	_ = godotenv.Load()
 	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	return &Config{
 		DatabaseURL: os.Getenv("DATABASE_URL"),
 		Port:        ":" + port,
