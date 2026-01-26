@@ -34,8 +34,9 @@ func Run(ctx context.Context, db *pgx.Conn) error {
         id SERIAL PRIMARY KEY,
         subject TEXT NOT NULL,
 		start_time TEXT NOT NULL,
-		end_time TEXT NOT NULL.
-        group_id INTEGER NOT NULL REFERENCES groups(id)
+		end_time TEXT NOT NULL,
+        group_id INTEGER NOT NULL REFERENCES groups(id),
+		subject_id INTEGER NOT NULL REFERENCES subjects(id)
     );
     CREATE TABLE IF NOT EXISTS attendance (
         id SERIAL PRIMARY KEY,
@@ -52,7 +53,7 @@ func Run(ctx context.Context, db *pgx.Conn) error {
     );
 	CREATE TABLE IF NOT EXISTS grades(
 		id SERIAL PRIMARY KEY,
-		grade DOUBLE PRECISION NOT NULL,
+		grade NUMERIC(4,2) NOT NULL,
 		credits INTEGER NOT NULL,
 		student_id INTEGER NOT NULL REFERENCES students(id),
         subject_id INTEGER NOT NULL REFERENCES subjects(id)
