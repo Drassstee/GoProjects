@@ -224,7 +224,7 @@
                     {
                         "type": "string",
                         "description": "Student Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -263,7 +263,7 @@
                     {
                         "type": "string",
                         "description": "Subject Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -351,7 +351,7 @@
                     {
                         "type": "string",
                         "description": "Instructor Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -387,7 +387,7 @@
                     {
                         "type": "string",
                         "description": "Group Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -472,7 +472,7 @@
                     {
                         "type": "string",
                         "description": "Student Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -511,7 +511,7 @@
                     {
                         "type": "string",
                         "description": "Student Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }

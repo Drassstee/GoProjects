@@ -228,7 +228,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Student Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -267,7 +267,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Subject Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -355,7 +355,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Instructor Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -391,7 +391,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Group Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -476,7 +476,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Student Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -515,7 +515,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Student Id",
-                        "name": "input",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }

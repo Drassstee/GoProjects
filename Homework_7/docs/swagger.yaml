@@ -251,7 +251,7 @@ paths:
       parameters:
       - description: Student Id
         in: path
-        name: input
+        name: id
         required: true
         type: string
       produces:
@@ -277,7 +277,7 @@ paths:
       parameters:
       - description: Subject Id
         in: path
-        name: input
+        name: id
         required: true
         type: string
       produces:
@@ -336,7 +336,7 @@ paths:
       parameters:
       - description: Instructor Id
         in: path
-        name: input
+        name: id
         required: true
         type: string
       produces:
@@ -360,7 +360,7 @@ paths:
       parameters:
       - description: Group Id
         in: path
-        name: input
+        name: id
         required: true
         type: string
       produces:
@@ -384,7 +384,7 @@ paths:
       parameters:
       - description: Student Id
         in: path
-        name: input
+        name: id
         required: true
         type: string
       produces:
@@ -441,7 +441,7 @@ paths:
       parameters:
       - description: Student Id
         in: path
-        name: input
+        name: id
         required: true
         type: string
       produces:

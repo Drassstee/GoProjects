@@ -24,7 +24,7 @@ func New(s *service.StudentService, js string) *Handler {
 // @Description  Get instructor info by ID
 // @Tags         instructor
 // @Produce      json
-// @Param input path string true "Instructor Id"
+// @Param id path string true "Instructor Id"
 // @Success      200  {object}  models.Instructor
 // @Failure      500  {object}  map[string]any
 // @Router       /instructor/{id} [get]
@@ -42,7 +42,7 @@ func (h *Handler) GetInstructor(c echo.Context) error {
 // @Description  Get student info by ID
 // @Tags         student
 // @Produce      json
-// @Param input path string true "Student Id"
+// @Param id path string true "Student Id"
 // @Success      200  {object}  models.Student
 // @Failure      500  {object}  map[string]any
 // @Router       /student/{id} [get]
@@ -106,7 +106,7 @@ func (h *Handler) InsertGroup(c echo.Context) error {
 // @Description  Get student's grades by ID
 // @Tags         grades
 // @Produce      json
-// @Param input path string true "Student Id"
+// @Param id path string true "Student Id"
 // @Success      200  {object}  []models.Grade
 // @Failure      500  {object}  map[string]any
 // @Router       /student/grades/{id} [get]
@@ -124,7 +124,7 @@ func (h *Handler) GetStudentGrades(c echo.Context) error {
 // @Description  Get group's schedule by ID
 // @Tags         schedule
 // @Produce      json
-// @Param input path string true "Group Id"
+// @Param id path string true "Group Id"
 // @Success      200  {object}  models.GroupSchedule
 // @Failure      500  {object}  map[string]any
 // @Router       /schedule/group/{id} [get]
@@ -158,7 +158,7 @@ func (h *Handler) GetAllSchedules(c echo.Context) error {
 // @Description  Get student's attendance info by ID
 // @Tags         attendace
 // @Produce      json
-// @Param input path string true "Student Id"
+// @Param id path string true "Student Id"
 // @Success      200  {object}  []models.Attendance
 // @Failure      500  {object}  map[string]any
 // @Router       /attendanceByStudentId/{id} [get]
@@ -176,7 +176,7 @@ func (h *Handler) GetAttendanceStudent(c echo.Context) error {
 // @Description  Get attendance info of the subject by ID
 // @Tags         attendace
 // @Produce      json
-// @Param input path string true "Subject Id"
+// @Param id path string true "Subject Id"
 // @Success      200  {object}  []models.Attendance
 // @Failure      500  {object}  map[string]any
 // @Router       /attendanceBySubjectId/{id} [get]
