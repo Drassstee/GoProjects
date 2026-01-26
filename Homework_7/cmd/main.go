@@ -18,9 +18,9 @@ import (
 
 // @title Deployment of university app and swagger just for info
 // @description Swagger API
-// @host localhost:8080
+// @host university-management-app-oojg.onrender.com
 // @BasePath /
-// @Schemes http
+// @Schemes https
 func main() {
 	cfg, err := config.Load()
 	if err != nil {
