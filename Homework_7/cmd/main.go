@@ -2,16 +2,23 @@ package main
 
 import (
 	"context"
-	"homework_6/internal/config"
-	"homework_6/internal/handlers"
-	"homework_6/internal/service"
-	"homework_6/internal/storage"
-	"homework_6/internal/storage/postgre"
+	"homework_7/internal/config"
+	"homework_7/internal/handlers"
+	"homework_7/internal/service"
+	"homework_7/internal/storage"
+	"homework_7/internal/storage/postgre"
 	"log"
 
+	_ "homework_7/docs"
+
 	"github.com/labstack/echo/v4"
+	eSwag "github.com/swaggo/echo-swagger"
 )
 
+// @title Deployment of university app and swagger just for info
+// @description Swagger API
+// @host localhost:8080
+// @BasePath /
 func main() {
 	cfg, err := config.Load()
 	if err != nil {
@@ -26,6 +33,7 @@ func main() {
 	srv := service.New(str, cfg.JWTsecret)
 	hdl := handlers.New(srv, cfg.JWTsecret)
 	server := echo.New()
+	server.GET("/swagger/*", eSwag.WrapHandler)
 	hdl.RegisterRoutes(server)
 	server.Logger.Fatal(server.Start(cfg.Port))
 }

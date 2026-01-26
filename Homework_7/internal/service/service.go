@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 	"errors"
-	"homework_6/internal/models"
-	"homework_6/internal/storage"
+	"homework_7/internal/models"
+	"homework_7/internal/storage"
 	"net/mail"
 	"time"
 

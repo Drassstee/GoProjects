@@ -2,7 +2,7 @@ package storage
 
 import (
 	"context"
-	"homework_6/internal/models"
+	"homework_7/internal/models"
 
 	"github.com/jackc/pgx/v5"
 )

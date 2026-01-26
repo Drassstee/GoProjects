@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"homework_6/internal/models"
-	"homework_6/internal/service"
+	"homework_7/internal/models"
+	"homework_7/internal/service"
 	"net/http"
 	"strings"
 
@@ -19,6 +19,14 @@ func New(s *service.StudentService, js string) *Handler {
 	return &Handler{Service: s, JWTsecret: js}
 }
 
+// GetInstructor godoc
+// @Summary      Get instructor info
+// @Description  Get instructor info by ID
+// @Tags         instructor
+// @Produce      json
+// @Success      200  {object}  models.Instructor
+// @Failure      500  {object}  map[string]any
+// @Router       /instructor/{id} [get]
 func (h *Handler) GetInstructor(c echo.Context) error {
 	id := c.Param("id")
 	st, err := h.Service.GetInstructor(c.Request().Context(), id)
@@ -28,6 +36,14 @@ func (h *Handler) GetInstructor(c echo.Context) error {
 	return c.JSON(http.StatusOK, st)
 }
 
+// GetStudent godoc
+// @Summary      Get student info
+// @Description  Get student info by ID
+// @Tags         student
+// @Produce      json
+// @Success      200  {object}  models.Student
+// @Failure      500  {object}  map[string]any
+// @Router       /student/{id} [get]
 func (h *Handler) GetStudent(c echo.Context) error {
 	id := c.Param("id")
 	st, err := h.Service.GetStudent(c.Request().Context(), id)
@@ -37,6 +53,14 @@ func (h *Handler) GetStudent(c echo.Context) error {
 	return c.JSON(http.StatusOK, st)
 }
 
+// GetStudentGrades godoc
+// @Summary      Get student's grades info
+// @Description  Get student's grades by ID
+// @Tags         grades
+// @Produce      json
+// @Success      200  {object}  []models.Grade
+// @Failure      500  {object}  map[string]any
+// @Router       /student/grades/{id} [get]
 func (h *Handler) GetStudentGrades(c echo.Context) error {
 	id := c.Param("id")
 	st, err := h.Service.GetStudentGrades(c.Request().Context(), id)
@@ -46,6 +70,14 @@ func (h *Handler) GetStudentGrades(c echo.Context) error {
 	return c.JSON(http.StatusOK, st)
 }
 
+// GetGroupSchedule godoc
+// @Summary      Get group's schedule
+// @Description  Get group's schedule by ID
+// @Tags         schedule
+// @Produce      json
+// @Success      200  {object}  models.GroupSchedule
+// @Failure      500  {object}  map[string]any
+// @Router       /schedule/group/{id} [get]
 func (h *Handler) GetGroupSchedule(c echo.Context) error {
 	id := c.Param("id")
 	sch, err := h.Service.GetGroupSchedule(c.Request().Context(), id)
@@ -55,6 +87,14 @@ func (h *Handler) GetGroupSchedule(c echo.Context) error {
 	return c.JSON(http.StatusOK, sch)
 }
 
+// GetAllSchedules godoc
+// @Summary      Get all groups' schedules
+// @Description  Get all groups' schedules
+// @Tags         schedule
+// @Produce      json
+// @Success      200  {object}  []models.GroupSchedule
+// @Failure      500  {object}  map[string]any
+// @Router       /all_class_schedule [get]
 func (h *Handler) GetAllSchedules(c echo.Context) error {
 	schedules, err := h.Service.GetAllSchedules(c.Request().Context())
 	if err != nil {
@@ -63,6 +103,14 @@ func (h *Handler) GetAllSchedules(c echo.Context) error {
 	return c.JSON(http.StatusOK, schedules)
 }
 
+// GetAttendanceStudent godoc
+// @Summary      Get student's attendance info
+// @Description  Get student's attendance info by ID
+// @Tags         attendace
+// @Produce      json
+// @Success      200  {object}  []models.Attendance
+// @Failure      500  {object}  map[string]any
+// @Router       /attendanceByStudentId/{id} [get]
 func (h *Handler) GetAttendanceStudent(c echo.Context) error {
 	id := c.Param("id")
 	at, err := h.Service.GetAttendanceStudent(c.Request().Context(), id)
@@ -72,6 +120,14 @@ func (h *Handler) GetAttendanceStudent(c echo.Context) error {
 	return c.JSON(http.StatusOK, at)
 }
 
+// GetAttendanceSubject godoc
+// @Summary      Get attendance info of the subject
+// @Description  Get attendance info of the subject by ID
+// @Tags         attendace
+// @Produce      json
+// @Success      200  {object}  []models.Attendance
+// @Failure      500  {object}  map[string]any
+// @Router       /attendanceBySubjectId/{id} [get]
 func (h *Handler) GetAttendanceSubject(c echo.Context) error {
 	id := c.Param("id")
 	at, err := h.Service.GetAttendanceSubject(c.Request().Context(), id)
@@ -81,6 +137,15 @@ func (h *Handler) GetAttendanceSubject(c echo.Context) error {
 	return c.JSON(http.StatusOK, at)
 }
 
+// InsertAttendance godoc
+// @Summary      Get attendance info of the subject
+// @Description  Get attendance info of the subject by ID
+// @Tags         attendace
+// @Produce      json
+// @Success      200  {object}  map[string]any
+// @Failure      400  {object}  map[string]any
+// @Failure      500  {object}  map[string]any
+// @Router       /attendance/subject [post]
 func (h *Handler) InsertAttendance(c echo.Context) error {
 	var at models.Attendance
 	if err := c.Bind(&at); err != nil {
@@ -93,6 +158,16 @@ func (h *Handler) InsertAttendance(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]any{"id": id})
 }
 
+// RegisterUser godoc
+// @Summary      Register user
+// @Description  Handler for Registration
+// @Tags         auth
+// @Produce      json
+// @Param input body models.AuthenticationReq true "Account Credentials"
+// @Success      200  {object} map[string]string
+// @Failure      400  {object} map[string]any
+// @Failure      401  {object} map[string]any
+// @Router       /api/auth/register [post]
 func (h *Handler) RegisterUser(c echo.Context) error {
 	var user models.AuthenticationReq
 	if err := c.Bind(&user); err != nil {
@@ -105,6 +180,16 @@ func (h *Handler) RegisterUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, "success")
 }
 
+// LoginUser godoc
+// @Summary      Login user
+// @Description  Handler for Login
+// @Tags         auth
+// @Produce      json
+// @Param input body models.AuthenticationReq true "Account Credentials"
+// @Success      200  {object} map[string]string
+// @Failure      400  {object} map[string]any
+// @Failure      401  {object} map[string]any
+// @Router       /api/auth/login [post]
 func (h *Handler) LoginUser(c echo.Context) error {
 	var user models.AuthenticationReq
 	if err := c.Bind(&user); err != nil {
@@ -117,6 +202,13 @@ func (h *Handler) LoginUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]string{"token": tok})
 }
 
+// GetUserById godoc
+// @Summary      Get current user info
+// @Security     BearerAuth
+// @Tags         users
+// @Produce      json
+// @Success      200  {object}  models.User
+// @Router       /api/users/me [get]
 func (h *Handler) GetUserById(c echo.Context) error {
 	id := c.Get("userId").(int)
 	user, err := h.Service.GetUserById(c.Request().Context(), id)

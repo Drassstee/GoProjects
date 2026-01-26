@@ -1,0 +1,330 @@
+basePath: /
+definitions:
+  models.Attendance:
+    properties:
+      id:
+        type: integer
+      student_id:
+        type: integer
+      subject_id:
+        type: integer
+      visit_day:
+        type: string
+      visited:
+        type: boolean
+    type: object
+  models.AuthenticationReq:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+    type: object
+  models.Grade:
+    properties:
+      credits:
+        type: integer
+      grade:
+        type: number
+      id:
+        type: integer
+      student_id:
+        type: integer
+      subject_id:
+        type: integer
+    type: object
+  models.GroupSchedule:
+    properties:
+      end_time:
+        type: string
+      group_id:
+        type: integer
+      id:
+        type: integer
+      start_time:
+        type: string
+      subject:
+        type: string
+    type: object
+  models.Instructor:
+    properties:
+      birth_date:
+        type: string
+      gender:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      title_name:
+        type: integer
+    type: object
+  models.Student:
+    properties:
+      birth_date:
+        type: string
+      gender:
+        type: string
+      group_id:
+        type: integer
+      group_name:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      role:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Swagger API
+  title: Deployment of university app and swagger just for info
+paths:
+  /all_class_schedule:
+    get:
+      description: Get all groups' schedules
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.GroupSchedule'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get all groups' schedules
+      tags:
+      - schedule
+  /api/auth/login:
+    post:
+      description: Handler for Login
+      parameters:
+      - description: Account Credentials
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.AuthenticationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Login user
+      tags:
+      - auth
+  /api/auth/register:
+    post:
+      description: Handler for Registration
+      parameters:
+      - description: Account Credentials
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.AuthenticationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Register user
+      tags:
+      - auth
+  /api/users/me:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      security:
+      - BearerAuth: []
+      summary: Get current user info
+      tags:
+      - users
+  /attendance/subject:
+    post:
+      description: Get attendance info of the subject by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get attendance info of the subject
+      tags:
+      - attendace
+  /attendanceByStudentId/{id}:
+    get:
+      description: Get student's attendance info by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Attendance'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get student's attendance info
+      tags:
+      - attendace
+  /attendanceBySubjectId/{id}:
+    get:
+      description: Get attendance info of the subject by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Attendance'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get attendance info of the subject
+      tags:
+      - attendace
+  /instructor/{id}:
+    get:
+      description: Get instructor info by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Instructor'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get instructor info
+      tags:
+      - instructor
+  /schedule/group/{id}:
+    get:
+      description: Get group's schedule by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GroupSchedule'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get group's schedule
+      tags:
+      - schedule
+  /student/{id}:
+    get:
+      description: Get student info by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Student'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get student info
+      tags:
+      - student
+  /student/grades/{id}:
+    get:
+      description: Get student's grades by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Grade'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get student's grades info
+      tags:
+      - grades
+swagger: "2.0"
