@@ -191,7 +191,7 @@ paths:
       - users
   /attendance/subject:
     post:
-      description: Get attendance info of the subject by ID
+      description: Insert attendance info
       produces:
       - application/json
       responses:
@@ -210,7 +210,7 @@ paths:
           schema:
             additionalProperties: true
             type: object
-      summary: Get attendance info of the subject
+      summary: Insert attendance info
       tags:
       - attendace
   /attendanceByStudentId/{id}:
@@ -305,6 +305,30 @@ paths:
             additionalProperties: true
             type: object
       summary: Get student info
+      tags:
+      - student
+  /student/create:
+    post:
+      description: Insert Student Info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Insert Student Info
       tags:
       - student
   /student/grades/{id}:
