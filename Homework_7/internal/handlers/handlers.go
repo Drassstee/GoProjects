@@ -53,6 +53,27 @@ func (h *Handler) GetStudent(c echo.Context) error {
 	return c.JSON(http.StatusOK, st)
 }
 
+// InsertStudent godoc
+// @Summary      Insert Student Info
+// @Description  Insert Student Info
+// @Tags         student
+// @Produce      json
+// @Success      200  {object}  map[string]any
+// @Failure      400  {object}  map[string]any
+// @Failure      500  {object}  map[string]any
+// @Router       /student/create [post]
+func (h *Handler) InsertStudent(c echo.Context) error {
+	var st models.Student
+	if err := c.Bind(&st); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]any{"message": err.Error()})
+	}
+	id, err := h.Service.InsertStudent(c.Request().Context(), st)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]any{"err: ": err.Error()})
+	}
+	return c.JSON(http.StatusOK, map[string]any{"id": id})
+}
+
 // GetStudentGrades godoc
 // @Summary      Get student's grades info
 // @Description  Get student's grades by ID
@@ -138,8 +159,8 @@ func (h *Handler) GetAttendanceSubject(c echo.Context) error {
 }
 
 // InsertAttendance godoc
-// @Summary      Get attendance info of the subject
-// @Description  Get attendance info of the subject by ID
+// @Summary      Insert attendance info
+// @Description  Insert attendance info
 // @Tags         attendace
 // @Produce      json
 // @Success      200  {object}  map[string]any
@@ -240,6 +261,7 @@ func (h *Handler) AuthMiddleware(n echo.HandlerFunc) echo.HandlerFunc {
 
 func (h *Handler) RegisterRoutes(e *echo.Echo) {
 	e.GET("/student/:id", h.GetStudent)
+	e.GET("/student/create", h.InsertStudent)
 	e.GET("/instructor/:id", h.GetInstructor)
 	e.GET("/student/grades/:id", h.GetStudentGrades)
 	e.GET("/schedule/group/:id", h.GetGroupSchedule)

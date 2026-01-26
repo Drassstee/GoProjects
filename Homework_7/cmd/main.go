@@ -4,6 +4,7 @@ import (
 	"context"
 	"homework_7/internal/config"
 	"homework_7/internal/handlers"
+	"homework_7/internal/migrations"
 	"homework_7/internal/service"
 	"homework_7/internal/storage"
 	"homework_7/internal/storage/postgre"
@@ -29,6 +30,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.Close(context.Background())
+	if err = migrations.Run(context.Background(), db); err != nil {
+		log.Fatal(err)
+	}
 	str := storage.New(db)
 	srv := service.New(str, cfg.JWTsecret)
 	hdl := handlers.New(srv, cfg.JWTsecret)

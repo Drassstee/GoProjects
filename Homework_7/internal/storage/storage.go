@@ -27,9 +27,15 @@ func (s *StudentStorage) GetStudent(ctx context.Context, id string) (models.Stud
 	return st, err
 }
 
+func (s *StudentStorage) InsertStudent(ctx context.Context, student models.Student) (int, error) {
+	var id int
+	err := s.DB.QueryRow(ctx, "INSERT INTO students (name, birth_date, gender, group_id) VALUES ($1, $2, $3, $4) RETURNING id", &student.Id, &student.Birthd, &student.Gender, &student.GroupId).Scan(&id)
+	return id, err
+}
+
 func (s *StudentStorage) GetStudentGrades(ctx context.Context, id string) ([]models.Grade, error) {
 	var grades []models.Grade
-	rows, err := s.DB.Query(ctx, "SELECT g.id, g.grade, g.credits, g.student_id, g.subject_id, g.groupname FROM grades AS g WHERE g.id=$1", id)
+	rows, err := s.DB.Query(ctx, "SELECT g.id, g.grade, g.credits, g.student_id, g.subject_id FROM grades AS g WHERE g.id=$1", id)
 	if err != nil {
 		return nil, err
 	}
