@@ -61,6 +61,13 @@ definitions:
       title_name:
         type: integer
     type: object
+  models.LoginReq:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
   models.Student:
     properties:
       birth_date:
@@ -120,7 +127,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/models.AuthenticationReq'
+          $ref: '#/definitions/models.LoginReq'
       produces:
       - application/json
       responses:
@@ -192,6 +199,13 @@ paths:
   /attendance/subject:
     post:
       description: Insert attendance info
+      parameters:
+      - description: Attendance Info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Attendance'
       produces:
       - application/json
       responses:
@@ -216,6 +230,13 @@ paths:
   /attendanceByStudentId/{id}:
     get:
       description: Get student's attendance info by ID
+      parameters:
+      - description: Student Id
+        in: body
+        name: input
+        required: true
+        schema:
+          type: string
       produces:
       - application/json
       responses:
@@ -236,6 +257,13 @@ paths:
   /attendanceBySubjectId/{id}:
     get:
       description: Get attendance info of the subject by ID
+      parameters:
+      - description: Subject Id
+        in: body
+        name: input
+        required: true
+        schema:
+          type: string
       produces:
       - application/json
       responses:
@@ -256,6 +284,13 @@ paths:
   /instructor/{id}:
     get:
       description: Get instructor info by ID
+      parameters:
+      - description: Instructor Id
+        in: body
+        name: input
+        required: true
+        schema:
+          type: string
       produces:
       - application/json
       responses:
@@ -274,6 +309,13 @@ paths:
   /schedule/group/{id}:
     get:
       description: Get group's schedule by ID
+      parameters:
+      - description: Group Id
+        in: body
+        name: input
+        required: true
+        schema:
+          type: string
       produces:
       - application/json
       responses:
@@ -292,6 +334,13 @@ paths:
   /student/{id}:
     get:
       description: Get student info by ID
+      parameters:
+      - description: Student Id
+        in: body
+        name: input
+        required: true
+        schema:
+          type: string
       produces:
       - application/json
       responses:
@@ -310,6 +359,13 @@ paths:
   /student/create:
     post:
       description: Insert Student Info
+      parameters:
+      - description: Student Info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Student'
       produces:
       - application/json
       responses:
@@ -334,6 +390,13 @@ paths:
   /student/grades/{id}:
     get:
       description: Get student's grades by ID
+      parameters:
+      - description: Student Id
+        in: body
+        name: input
+        required: true
+        schema:
+          type: string
       produces:
       - application/json
       responses:

@@ -55,7 +55,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.AuthenticationReq"
+                            "$ref": "#/definitions/models.LoginReq"
                         }
                     }
                 ],
@@ -168,6 +168,17 @@
                     "attendace"
                 ],
                 "summary": "Insert attendance info",
+                "parameters": [
+                    {
+                        "description": "Attendance Info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Attendance"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -203,6 +214,17 @@
                     "attendace"
                 ],
                 "summary": "Get student's attendance info",
+                "parameters": [
+                    {
+                        "description": "Student Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -233,6 +255,17 @@
                     "attendace"
                 ],
                 "summary": "Get attendance info of the subject",
+                "parameters": [
+                    {
+                        "description": "Subject Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -263,6 +296,17 @@
                     "instructor"
                 ],
                 "summary": "Get instructor info",
+                "parameters": [
+                    {
+                        "description": "Instructor Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -290,6 +334,17 @@
                     "schedule"
                 ],
                 "summary": "Get group's schedule",
+                "parameters": [
+                    {
+                        "description": "Group Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -317,6 +372,17 @@
                     "student"
                 ],
                 "summary": "Insert Student Info",
+                "parameters": [
+                    {
+                        "description": "Student Info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Student"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -352,6 +418,17 @@
                     "grades"
                 ],
                 "summary": "Get student's grades info",
+                "parameters": [
+                    {
+                        "description": "Student Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -382,6 +459,17 @@
                     "student"
                 ],
                 "summary": "Get student info",
+                "parameters": [
+                    {
+                        "description": "Student Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -492,6 +580,17 @@
                 },
                 "title_name": {
                     "type": "integer"
+                }
+            }
+        },
+        "models.LoginReq": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         },

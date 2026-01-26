@@ -62,7 +62,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.AuthenticationReq"
+                            "$ref": "#/definitions/models.LoginReq"
                         }
                     }
                 ],
@@ -175,6 +175,17 @@ const docTemplate = `{
                     "attendace"
                 ],
                 "summary": "Insert attendance info",
+                "parameters": [
+                    {
+                        "description": "Attendance Info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Attendance"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -210,6 +221,17 @@ const docTemplate = `{
                     "attendace"
                 ],
                 "summary": "Get student's attendance info",
+                "parameters": [
+                    {
+                        "description": "Student Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -240,6 +262,17 @@ const docTemplate = `{
                     "attendace"
                 ],
                 "summary": "Get attendance info of the subject",
+                "parameters": [
+                    {
+                        "description": "Subject Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -270,6 +303,17 @@ const docTemplate = `{
                     "instructor"
                 ],
                 "summary": "Get instructor info",
+                "parameters": [
+                    {
+                        "description": "Instructor Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -297,6 +341,17 @@ const docTemplate = `{
                     "schedule"
                 ],
                 "summary": "Get group's schedule",
+                "parameters": [
+                    {
+                        "description": "Group Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -324,6 +379,17 @@ const docTemplate = `{
                     "student"
                 ],
                 "summary": "Insert Student Info",
+                "parameters": [
+                    {
+                        "description": "Student Info",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Student"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -359,6 +425,17 @@ const docTemplate = `{
                     "grades"
                 ],
                 "summary": "Get student's grades info",
+                "parameters": [
+                    {
+                        "description": "Student Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -389,6 +466,17 @@ const docTemplate = `{
                     "student"
                 ],
                 "summary": "Get student info",
+                "parameters": [
+                    {
+                        "description": "Student Id",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -499,6 +587,17 @@ const docTemplate = `{
                 },
                 "title_name": {
                     "type": "integer"
+                }
+            }
+        },
+        "models.LoginReq": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         },
