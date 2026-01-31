@@ -148,7 +148,7 @@ func (h *Handler) GetGroupSchedule(c echo.Context) error {
 func (h *Handler) GetAllSchedules(c echo.Context) error {
 	schedules, err := h.Service.GetAllSchedules(c.Request().Context())
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, map[string]any{"err: ": err.Error()})
+		return c.JSON(http.StatusInternalServerError, map[string]any{"err2: ": err.Error()})
 	}
 	return c.JSON(http.StatusOK, schedules)
 }

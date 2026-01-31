@@ -4,17 +4,20 @@ import { useNavigate, Link } from 'react-router'
 export default function Register() {
   const navigate = useNavigate()
   const [error, setError] = useState('')
+  const [email, setEmail] = useState('')
+  const [role, setRole] = useState('none')
+  const [password, setPassword] = useState('')
+
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError('')
-    const formData = new FormData(e.currentTarget)
     const payload = {
-      email: formData.get('email'),
-      role: formData.get('role'),
-      password: formData.get('password')
+      email: email,
+      role: role,
+      password: password
     }
     try {
-      const response = await fetch('http://localhost:8080/api/auth/register', {
+      const response = await fetch('https://university-management-app-oojg.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -41,19 +44,38 @@ export default function Register() {
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input name="email" type="email" required className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-500" />
+            <input 
+              name="email" 
+              type="email" 
+              required 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-500" 
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Role</label>
-            <select name="role" className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="none" disabled selected>Pick a role</option>
-                <option>Student</option>
-                <option>Instructor</option>
+            <select 
+              name="role" 
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                <option value="none" disabled>Pick a role</option>
+                <option value="Student">Student</option>
+                <option value="Instructor">Instructor</option>
             </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input name="password" type="password" required className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-500" />
+            <input 
+              name="password" 
+              type="password" 
+              required 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-500" 
+            />
           </div>
           <button type="submit" className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition cursor-pointer">
             Sign Up
