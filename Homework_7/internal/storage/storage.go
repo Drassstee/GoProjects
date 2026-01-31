@@ -64,7 +64,7 @@ func (s *StudentStorage) GetGroupSchedule(ctx context.Context, id string) (model
 
 func (s *StudentStorage) GetAllSchedules(ctx context.Context) ([]models.GroupSchedule, error) {
 	var schedules []models.GroupSchedule
-	rows, err := s.DB.Query(ctx, "SELECT c.id, g.id, c.subject, c.start_time, c.end_time FROM class_schedule AS c JOIN groups AS g ON c.group_id=g.id WHERE g.id=$1")
+	rows, err := s.DB.Query(ctx, "SELECT c.id, g.id, c.subject, c.start_time, c.end_time FROM class_schedule AS c JOIN groups AS g ON c.group_id=g.id")
 	if err != nil {
 		return nil, err
 	}
