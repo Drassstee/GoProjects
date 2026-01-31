@@ -13,6 +13,7 @@ import (
 	_ "homework_7/docs"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	eSwag "github.com/swaggo/echo-swagger"
 )
 
@@ -38,6 +39,7 @@ func main() {
 	srv := service.New(str, cfg.JWTsecret)
 	hdl := handlers.New(srv, cfg.JWTsecret)
 	server := echo.New()
+	server.Use(middleware.CORS())
 	server.GET("/swagger/*", eSwag.WrapHandler)
 	hdl.RegisterRoutes(server)
 	server.Logger.Fatal(server.Start(cfg.Port))
